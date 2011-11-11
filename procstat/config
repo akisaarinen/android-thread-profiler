@@ -1,0 +1,9 @@
+# Should point to Android platform which has been built
+ANDROID_PATH:=/home/amsaarin/android/android-2.2.1-r2
+
+# ARM eabi version from the android platform. Tested with
+# 4.2.1, other versions might work (or might not).
+ARM_EABI_VERSION:=4.2.1
+
+# Directory where to push the resulting binary in the phone
+PUSH_DIR:=/data/scripts
