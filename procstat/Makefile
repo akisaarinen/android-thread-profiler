@@ -21,14 +21,20 @@ AGCC:=$(PWD)/../agcc/agcc
 ARM_EABI_PATH:=$(ANDROID_PATH)/prebuilt/linux-x86/toolchain/arm-eabi-$(ARM_EABI_VERSION)
 PATH:=$(ARM_EABI_PATH)/bin:$(PATH)
 TARGET_ANDROID:=procstat-android
+TARGET_HOST:=procstat-host
 SRC:=procstat.c thread.c thread-list.c read-proc.c
 
-all: compile
+HOST_CC:=gcc
+
+all: compile host
 
 compile:
 	test -d $(ANDROID_PATH) || exit 1
 	test -d $(ARM_EABI_PATH) || exit 1
 	$(AGCC) $(SRC) -o $(TARGET_ANDROID)
+
+host:
+	$(HOST_CC) $(SRC) -o $(TARGET_HOST)
 
 push:
 	adb push $(TARGET_ANDROID) $(PUSH_DIR)
@@ -36,5 +42,5 @@ push:
 clean-push: clean compile push
 
 clean:
-	rm -rf $(TARGET_ANDROID)
+	rm -rf $(TARGET_ANDROID) $(TARGET_HOST)
 
