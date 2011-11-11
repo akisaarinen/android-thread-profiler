@@ -2,6 +2,7 @@
 #include "read-proc.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 extern int quiet;
