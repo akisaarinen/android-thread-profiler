@@ -151,7 +151,7 @@ int parse_args_and_run(int argc, char** argv) {
 
 int main(int argc, char** argv) {
     if (argc <= 1) {
-        fprintf(stderr, "Usage: %s [-q] [-s sleep_period_ms] PID\n",
+        fprintf(stderr, "Usage: %s [-q] [-s sleep_period_ms] [-t time_sec] PID\n",
                 argv[0]);
         return EXIT_FAILURE;
     } else {
